@@ -14,9 +14,11 @@ spec:
         app: redis-cluster
         name: redis
     spec:
+      nodeSelector:
+        cluster: caas
       containers:
       - name: redis
-        image: "deis/redis:v0.0.5"
+        image: "hub.qingyuanos.com/redis:deis-v0.0.5"
         ports:
         - containerPort: 6379
         resources:

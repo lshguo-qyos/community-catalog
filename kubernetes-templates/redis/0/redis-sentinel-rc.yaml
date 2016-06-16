@@ -16,9 +16,11 @@ spec:
         role: sentinel
         provider: redis
     spec:
+      nodeSelector:
+        cluster: caas
       containers:
       - name: sentinel
-        image: "deis/redis:v0.0.5"
+        image: "hub.qingyuanos.com/redis:deis-v0.0.5"
         env:
           - name: SENTINEL
             value: "true"

@@ -9,9 +9,11 @@ metadata:
     bootstrap: "true"
   name: redis-master
 spec:
+  nodeSelector:
+    cluster: caas
   containers:
     - name: master
-      image: "deis/redis:v0.0.5"
+      image: "hub.qingyuanos.com/redis:deis-v0.0.5"
       env:
         - name: MASTER
           value: "true"
