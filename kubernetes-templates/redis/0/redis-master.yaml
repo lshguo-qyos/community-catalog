@@ -28,7 +28,7 @@ spec:
         - mountPath: /redis-master-data
           name: data
     - name: sentinel
-      image: "deis/redis:v0.0.5"
+      image: "hub.qingyuanos.com/redis:deis-v0.0.5"
       env:
         - name: SENTINEL
           value: "true"
