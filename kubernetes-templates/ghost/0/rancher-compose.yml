@@ -1,30 +1,35 @@
 .catalog:
   name: Ghost
   version: 0.7.8-rancher1
-  description: Open source publishing platform
+  description: "开源的发布平台"
   questions:
     - variable: "mysql_root_pass"
-      label: "MySQL root password"
+      label: "MySQL的root密码"
       required: true
       type: "password"
+      description: "用户必须给出MySQL密码"
     - variable: "ghost_db"
-      label: "Ghost database name on mysql"
+      label: "Ghost数据库在MySQL上的名称"
       required: true
       type: "string"
       default: "ghost"
+      description: "默认名称是ghost"
     - variable: "ghost_db_user"
-      label: "Ghost database username"
+      label: "Ghost数据库用户名"
       required: true
       type: "string"
       default: "ghostuser"
+      description: "默认用户名是ghostuser"
     - variable: "ghost_db_pass"
-      label: "Ghost database password"
+      label: "Ghost数据库密码"
       required: true
       type: "password"
       default: "ghostpass"
-      description: "default password is ghostpass"
+      description: "默认密码是ghostpass"
     - variable: "ghost_url"
-      label: "Ghost url"
+      label: "Ghost链接地址"
       required: true
       type: "string"
       default: "http://example-ghost.com"
+      description: "默认地址是http://example-ghost.com"
+
