@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: rabbitmq
-        image: rabbitmq:3.6.0
+        image: hub.qingyuanos.com/rabbitmq:3.6.0
         ports:
         - containerPort: 5672

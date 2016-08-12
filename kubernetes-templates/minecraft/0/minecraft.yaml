@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: minecraft
-        image: "itzg/minecraft-server:latest"
+        image: "hub.qingyuanos.com/minecraft-server:latest"
         ports: 
         - containerPort: 25565
         env:

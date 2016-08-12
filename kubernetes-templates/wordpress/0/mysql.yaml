@@ -21,7 +21,7 @@ spec:
     - resources:
         limits :
           cpu: 0.5
-      image: mysql
+      image: hub.qingyuanos.com/mysql
       name: mysql
       env:
         - name: MYSQL_ROOT_PASSWORD

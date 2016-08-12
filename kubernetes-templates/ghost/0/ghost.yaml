@@ -8,7 +8,7 @@ metadata:
 spec:
   restartPolicy: Always
   containers: 
-    - image: "husseingalal/ghost"
+    - image: "hub.qingyuanos.com/ghost"
       name: "ghost"
       ports:
       - containerPort: 2368

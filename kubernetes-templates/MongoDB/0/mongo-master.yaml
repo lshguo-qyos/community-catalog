@@ -20,7 +20,7 @@ metadata:
 spec:
   containers:
     - name: mongo-master
-      image: "husseingalal/mongo-k8s"
+      image: "hub.qingyuanos.com/mongo-k8s"
       env:
         - name: PRIMARY
           value: "true"

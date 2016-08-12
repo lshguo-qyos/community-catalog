@@ -19,7 +19,7 @@ metadata:
     name: wordpress
 spec: 
   containers: 
-    - image: wordpress
+    - image: hub.qingyuanos.com/wordpress
       name: wordpress
       env:
         - name: WORDPRESS_DB_PASSWORD
