@@ -1,0 +1,20 @@
+.catalog:
+  name: "Wordpress + MySQL"
+  version: "1.0.0"
+  description: "plus phpMyAdmin"
+  questions:
+    - variable: "WP_PASSWORD"
+      label: "Mysql database password"
+      required: true
+      default: "wordpress"
+      type: "string"
+    - variable: "SERVICE_PORT"
+      label: "Service port"
+      required: true
+      default: 80
+      type: "int"
+    - variable: "MYSQL_SERVICE_NAME"
+      label: "Service name"
+      required: true
+      default: "wordpress-mysql"
+      type: "string"
