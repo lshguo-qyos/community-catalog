@@ -1,0 +1,4 @@
+name: "MySQL DB"
+description: "Data Base service"
+version: 1.0.0
+category: DataBase

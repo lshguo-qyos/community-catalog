@@ -6,10 +6,10 @@
     - variable: "WP_PASSWORD"
       label: "Mysql database password"
       required: true
-      default: "wordpress"
+      default: "password"
       type: "string"
     - variable: "SERVICE_PORT"
       label: "Service port"
       required: true
-      default: 80
+      default: 3306
       type: "int"
