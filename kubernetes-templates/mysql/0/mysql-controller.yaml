@@ -11,32 +11,31 @@ spec:
       labels:
         name: mysql
     spec:
-      containers: 
-        - resources:
-            limits :
-            cpu: 0.5
-         image: hub.qingyuanos.com/mysql
-         name: mysql
-         env:
-           - name: MYSQL_ROOT_PASSWORD
-             value: ${WP_PASSWORD}
-         ports: 
-           - containerPort: 3306
-             name: mysql
-         volumeMounts:
-           - name: mysql-ephemeral-storage
-             mountPath: /var/lib/mysql
-         # we're alive when the socket opens
-         livenessProbe:
-           tcpSocket:
-             port: "mysql"
-           initialDelaySeconds: 5
-           timeoutSeconds: 1
-         # this may leak the password to logs
-         readinessProbe:
-           exec:
-             command: ["mysqladmin", "status", "-p${WP_PASSWORD}"]
+      containers:
+      - image: hub.qingyuanos.com/mysql
+        name: mysql
+        ports:
+        - name: mysql
+          containerPort: 3306
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: ${WP_PASSWORD}
+        livenessProbe:
+          tcpSocket:
+            port: "mysql"
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+        readinessProbe:
+          exec:
+            command: ["mysqladmin", "status", "-p${WP_PASSWORD}"]
+        volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
       volumes:
-        # move a pod, lose your data
-       - name: mysql-ephemeral-storage
-         emptyDir: {}
+        - name: mysql-persistent-storage
+          emptyDir: {}
+
