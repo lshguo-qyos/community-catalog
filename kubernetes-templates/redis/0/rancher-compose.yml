@@ -1,6 +1,6 @@
 .catalog:
   name: Redis
-  version: 2.8.23-rancher1
+  version: 2.8.23-qydcos1
   description: "高可用内存数据库"
   questions:
     - variable: "REDIS_REPLICAS"

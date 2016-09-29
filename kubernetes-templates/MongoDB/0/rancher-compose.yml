@@ -1,6 +1,6 @@
 .catalog:
   name: MongoDB
-  version: 3.2-rancher1
+  version: 3.2-qydcos1
   description: MongoDB Replica Set
   questions:
     - variable: SERVICE_PORT
