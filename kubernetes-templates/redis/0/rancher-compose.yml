@@ -9,9 +9,3 @@
       type: "int"
       default: 3
       description: "默认数量为3"
-    - variable: "SENTINEL_REPLICAS"
-      label: "Redis Sentinel节点数量"
-      required: true
-      type: "int"
-      default: 3
-      description: "默认数量为3"

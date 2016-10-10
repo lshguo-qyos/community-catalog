@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: rabbitmq
+  name: rabbitmq-${RELEASE_MARK}
   labels:
-    provider: rabbitmq
+    name: rabbitmq-${RELEASE_MARK}
     heritage: helm
 spec:
   replicas: ${REPLICAS}
   template:
     metadata:
       labels:
-        provider: rabbitmq
+        name: rabbitmq-${RELEASE_MARK}
     spec:
       containers:
       - name: rabbitmq

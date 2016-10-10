@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rabbitmq
+  name: rabbitmq-${RELEASE_MARK}
   labels:
-    provider: rabbitmq
+    name: rabbitmq-${RELEASE_MARK}
     heritage: helm
 spec:
   ports:
   - port: ${SERVICE_PORT}
     targetPort: 5672
   selector:
-    provider: rabbitmq
+    name: rabbitmq-${RELEASE_MARK}

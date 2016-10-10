@@ -1,0 +1,79 @@
+apiVersion: apps/v1alpha1
+kind: PetSet
+metadata:
+  name: redis-cluster-${RELEASE_MARK}
+spec:
+  serviceName: redis-cluster-${RELEASE_MARK}
+  replicas: ${REDIS_REPLICAS}
+  template:
+    metadata:
+      labels:
+        app: redis-cluster-${RELEASE_MARK}
+      annotations:
+        pod.alpha.kubernetes.io/initialized: "true"
+        # NOTE: Init container must be idempotent
+        # Add a baked-in Redis config file that enables cluster mode
+        #pod.alpha.kubernetes.io/init-containers: '[
+        #]'
+    spec:
+      terminationGracePeriodSeconds: 0
+      #hostNetwork: true
+      #nodeSelector:
+        #cluster: caas
+      containers:
+      - name: redis-cluster
+        image: hub.qingyuanos.com/redis:3.2.1
+        ports:
+        - containerPort: 6379
+          name: client
+        - containerPort: 16379
+          name: gossip
+        command:
+        - sh
+        args:
+        - /conf/bootstrap-pod.sh
+        # Ensure that Redis is online before initializing the next pet.
+        # TODO: Test that the cluster node is init'd properly.
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "redis-cli -h $(hostname) ping"
+          initialDelaySeconds: 15
+          timeoutSeconds: 5
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+          readOnly: false
+        - name: podinfo
+          mountPath: /etc/podinfo
+          readOnly: false
+      volumes:
+      # Insert our pre-baked Redis configuration file into /conf/redis.conf
+      - name: conf
+        configMap:
+          name: redis-cluster-config-${RELEASE_MARK}
+          items:
+          - key: redis.conf
+            path: redis.conf
+          - key: bootstrap-pod.sh  # TODO: Move this or extract it into its own Docker image
+            path: bootstrap-pod.sh
+      # The init container will use this info to find cluster peers
+      - name: podinfo
+        downwardAPI:
+          items:
+            - path: "labels"
+              fieldRef:
+                fieldPath: metadata.labels
+            - path: "annotations"
+              fieldRef:
+                fieldPath: metadata.annotations
+            - path: "pod_name"
+              fieldRef:
+                fieldPath: metadata.name
+            - path: "pod_namespace"
+              fieldRef:
+                fieldPath: metadata.namespace
+
+

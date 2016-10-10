@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: mysql
-  name: mysql
+    name: mysql-${RELEASE_MARK}
+  name: mysql-${RELEASE_MARK}
 spec:
   ports:
     - port: ${SERVICE_PORT}
       targetPort: 3306
   selector:
-    name: mysql
+    name: mysql-${RELEASE_MARK}

@@ -1,18 +1,18 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: spark-master-controller
+  name: spark-master-controller-${RELEASE_MARK}
   labels:
     heritage: helm
-    provider: spark
+    provider: spark-${RELEASE_MARK}
 spec:
   replicas: 1
   selector:
-    component: spark-master
+    component: spark-master-${RELEASE_MARK}
   template:
     metadata:
       labels:
-        component: spark-master
+        component: spark-master-${RELEASE_MARK}
     spec:
       containers:
         - name: spark-master

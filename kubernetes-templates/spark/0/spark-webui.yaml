@@ -1,14 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: spark-webui
+  name: spark-webui-${RELEASE_MARK}
   labels:
     heritage: helm
-    provider: spark
+    provider: spark-${RELEASE_MARK}
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    component: spark-master
+    component: spark-master-${RELEASE_MARK}
   type: LoadBalancer

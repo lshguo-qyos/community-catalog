@@ -1,18 +1,18 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: spark-worker-controller
+  name: spark-worker-controller-${RELEASE_MARK}
   labels:
     heritage: helm
-    provider: spark
+    provider: spark-${RELEASE_MARK}
 spec:
   replicas: ${SPARK_WORKER_REPLICAS}
   selector:
-    component: spark-worker
+    component: spark-worker-${RELEASE_MARK}
   template:
     metadata:
       labels:
-        component: spark-worker
+        component: spark-worker-${RELEASE_MARK}
     spec:
       containers:
         - name: spark-worker

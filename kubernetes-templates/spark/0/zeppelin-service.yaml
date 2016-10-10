@@ -1,14 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: zeppelin
+  name: zeppelin-${RELEASE_MARK}
   labels:
     heritage: helm
-    provider: spark
+    provider: spark-${RELEASE_MARK}
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    component: zeppelin
+    component: zeppelin-${RELEASE_MARK}
 

@@ -1,18 +1,18 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: zeppelin-controller
+  name: zeppelin-controller-${RELEASE_MARK}
   labels:
     heritage: helm
-    provider: spark
+    provider: spark-${RELEASE_MARK}
 spec:
   replicas: 1
   selector:
-    component: zeppelin
+    component: zeppelin-${RELEASE_MARK}
   template:
     metadata:
       labels:
-        component: zeppelin
+        component: zeppelin-${RELEASE_MARK}
     spec:
       containers:
         - name: zeppelin
