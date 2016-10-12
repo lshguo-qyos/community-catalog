@@ -9,5 +9,7 @@ spec:
   ports:
   - port: ${SERVICE_PORT}
     targetPort: 5672
+    name: rabbitmq-port-0
+  type: NodePort
   selector:
     name: rabbitmq-${RELEASE_MARK}

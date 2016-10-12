@@ -6,6 +6,9 @@ metadata:
   name: cassandra-${RELEASE_MARK}
 spec:
   ports:
-    - port: 9042
+    - name: cassandra-port0
+      port: 9042
+      targetPort: 9042
+  type: NodePort
   selector:
     name: cassandra-${RELEASE_MARK}

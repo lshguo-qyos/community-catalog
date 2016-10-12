@@ -9,6 +9,8 @@ spec:
   ports:
     - port: 7077
       targetPort: 7077
+      name: port0
+  type: NodePort
   selector:
     component: spark-master-${RELEASE_MARK}
 

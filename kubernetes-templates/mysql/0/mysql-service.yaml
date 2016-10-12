@@ -8,5 +8,7 @@ spec:
   ports:
     - port: ${SERVICE_PORT}
       targetPort: 3306
+      name: mysql-port-0
+  type: NodePort
   selector:
     name: mysql-${RELEASE_MARK}

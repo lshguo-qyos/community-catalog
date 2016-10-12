@@ -9,6 +9,8 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
+      name: port0
+  type: NodePort
   selector:
     component: spark-master-${RELEASE_MARK}
   type: LoadBalancer

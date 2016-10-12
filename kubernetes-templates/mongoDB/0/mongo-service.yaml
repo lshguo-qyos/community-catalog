@@ -8,5 +8,7 @@ spec:
   ports:
     - port: ${SERVICE_PORT}
       targetPort: 27017
+      name: mongo-port-0
+  type: NodePort
   selector:
     name: mongo-${RELEASE_MARK}
