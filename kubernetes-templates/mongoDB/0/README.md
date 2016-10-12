@@ -1,5 +1,4 @@
 # MongoDB
 
-MongoDB is an open-source, document database designed for ease of development and scaling.
+MongoDB是一个基于分布式文件存储的数据库, 高性能、易部署、易使用，存储数据非常方便。
 
-This is a MongoDB replica set deployment on Kubernetes environment, it will create MongoDB replica set with the ability to scale it in the future.

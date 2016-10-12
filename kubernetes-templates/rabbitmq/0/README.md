@@ -1,3 +1,4 @@
 # RabbitMQ
 
-This Chart provides a basic RabbitMQ instance running in kubernetes.
+RabbitMQ是一个开源的AMQP实现, 用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现优秀。
+
